@@ -277,10 +277,39 @@ class NameForm extends React.Component {
 
 
 class Lifting extends Component{
+
+  state ={
+    count:0,
+  };
+
+  increment = () => {
+    this.setState({
+      count:this.state.count + 1
+    });
+  };
+  decrement = () => {
+    this.setState({
+      count:this.state.count - 1
+    });
+  };
   render(){
     return(
       <div>
         <h1>Lifting State Up</h1>
+        <Counter count={this.state.count} increment={this.increment} decrement={this.decrement} />
+        <Counter count={this.state.count} increment={this.increment} decrement={this.decrement} />
+      </div>
+    )
+  }
+}
+
+class Counter extends Component{
+  render(){
+    return(
+      <div>
+        <div>Count:{this.props.count}</div>
+        <button onClick={this.props.increment}>Increment</button>
+        <button onClick={this.props.decrement}>Decrement</button>
       </div>
     )
   }
